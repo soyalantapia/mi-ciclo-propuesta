@@ -332,8 +332,8 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .cierre p { color: var(--muted); font-size: 14px; }
 
 /* Aparición: el contenido arranca visible y sólo se acomoda al entrar. */
-.js-anim [data-r] { transition: transform .9s cubic-bezier(.2,.8,.2,1), opacity .9s; }
-.js-anim [data-r].espera { transform: translateY(22px); opacity: .55; }
+.js-anim [data-r] { transition: transform .9s cubic-bezier(.2,.8,.2,1), opacity .9s, filter .9s; }
+.js-anim [data-r].espera { transform: translateY(22px); opacity: .55; filter: blur(3px); }
 
 @media (min-width: 941px) and (max-width: 1180px) {
   .etapa.e2 { right: 0; }
@@ -409,9 +409,71 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   .vitrina { grid-template-columns: repeat(3, 200px); }
   .ctrl .fila-l { flex-wrap: wrap; row-gap: 2px; }
 }
+
+/* ── Movimiento: progreso, encabezado fijo y portada viva ── */
+.progreso { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 3px; z-index: 60; pointer-events: none; }
+.progreso i { display: block; height: 100%; transform-origin: left; transform: scaleX(var(--prog, 0)); background: linear-gradient(90deg, #9b7cc8, #6e2a87, #e3c179); }
+.mini-cab { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); background: color-mix(in srgb, var(--bg) 84%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); transform: translateY(-110%); visibility: hidden; transition: transform .5s cubic-bezier(.2,.8,.2,1), visibility .5s; }
+.mini-cab.ver { transform: none; visibility: visible; }
+.mini-in { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 10px; padding-block: 9px; }
+.mini-in img { width: 30px; height: auto; }
+.mini-in .x { color: var(--muted); font-size: 13px; }
+.mini-in a { margin-left: auto; font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--plum); white-space: nowrap; padding: 6px 12px; border-radius: 999px; background: var(--lav-wash); }
+.mini-in a:hover { background: color-mix(in srgb, var(--lav) 22%, transparent); }
+.petalos { position: absolute; inset: 0; width: 100%; height: 100%; }
+.palabra { display: inline-block; animation: sube .75s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 45ms + 40ms); }
+.entra-h { animation: sube .8s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 80ms + 260ms); }
+@keyframes sube { from { opacity: 0; transform: translateY(.5em); filter: blur(6px); } }
+.escena .phone { translate: calc(var(--mx, 0) * -10px) calc(var(--my, 0) * -8px); transition: translate .7s cubic-bezier(.2,.8,.2,1); }
+.etapa { translate: calc(var(--mx, 0) * var(--d, 16px)) calc(var(--my, 0) * var(--d, 16px)); transition: translate .7s cubic-bezier(.2,.8,.2,1); }
+.etapa.e1 { --d: 26px; } .etapa.e2 { --d: -20px; } .etapa.e3 { --d: 18px; } .etapa.e4 { --d: -28px; }
+.aura { translate: calc(var(--mx, 0) * 24px) calc(var(--my, 0) * 24px); transition: translate 1s cubic-bezier(.2,.8,.2,1); }
+.chat { transition: transform .7s cubic-bezier(.7,0,.2,1), opacity .5s; }
+.mapa-vivo { position: absolute; left: 0; right: 0; top: 34px; bottom: 108px; padding: 16px 14px; background: #fbf4f6; transform: translateX(104%); transition: transform .7s cubic-bezier(.7,0,.2,1); display: grid; align-content: start; gap: 6px; z-index: 2; }
+.mapa-vivo h5 { font-family: var(--font-display); font-weight: 500; font-size: 21px; color: #6e2a87; margin: 0; }
+.mapa-vivo p { font-size: 10.5px; color: #8a6c99; line-height: 1.4; }
+.mapa-vivo .mes { font-family: var(--font-display); font-size: 13.5px; color: #6e2a87; margin-top: 4px; }
+.cal-vivo span { transition: background .35s, color .35s, border-color .35s, transform .35s; }
+.cal-vivo span.on-v { background: #6e2a87; border-color: #6e2a87; color: #fff; transform: scale(1.08); }
+.cal-vivo span.on-r { background: #6f8f7a; border-color: #6f8f7a; color: #fff; transform: scale(1.08); }
+.cal-vivo span.on-h { border: 1.5px solid #6e2a87; color: #6e2a87; font-weight: 700; }
+.mapa-vivo .ley { display: flex; gap: 12px; font-size: 9.5px; color: #7d5e8c; margin-top: 6px; }
+.mapa-vivo .ley i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; }
+.mapa-vivo .ley i.v { background: #6e2a87; } .mapa-vivo .ley i.r { background: #6f8f7a; }
+.screen.en-mapa .mapa-vivo { transform: none; }
+.screen.en-mapa .chat { transform: translateX(-30%); opacity: 0; }
+.tabs .t, .tabs .n { transition: color .4s; }
+.screen.en-mapa .tab-mapa { color: #6e2a87; font-weight: 600; }
+.screen.en-mapa .tab-mapa svg { stroke: #6e2a87; }
+.screen.en-mapa .tab-numa { color: #c9b3c2; }
+
+/* ── Al bajar: el plan se llena, la barra crece, los íconos se dibujan ── */
+.linea .relleno { position: absolute; left: 6%; right: 6%; top: 22px; height: 2px; background: linear-gradient(90deg, #9b7cc8, #6e2a87); transform-origin: left; transform: scaleX(var(--lp, 1)); }
+.js-anim .linea .viaje { display: none; }
+.sem .dot { transition: background .45s, color .45s, border-color .45s, box-shadow .45s, transform .45s; }
+.sem.activa .dot { background: var(--plum); color: var(--bg); border-color: var(--plum); box-shadow: 0 0 0 6px color-mix(in srgb, var(--plum) 16%, transparent); transform: scale(1.06); }
+.barra.crece > div { animation: crece 1s cubic-bezier(.2,.8,.2,1) both; }
+.barra.crece .b2 { animation-delay: .18s; } .barra.crece .b3 { animation-delay: .36s; }
+@keyframes crece { from { scale: 0 1; opacity: .3; } }
+.js-anim .ent .ic svg > * { stroke-dasharray: 90; stroke-dashoffset: 0; transition: stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1) .2s; }
+.js-anim .ent.espera .ic svg > * { stroke-dashoffset: 90; }
+
+/* ── Al tocar: una luz que sigue al mouse ── */
+.tile { position: relative; overflow: hidden; }
+.ent::after, .tile::after, .forma::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .45s; background: radial-gradient(280px circle at var(--gx, 50%) var(--gy, 50%), color-mix(in srgb, var(--lav) 24%, transparent), transparent 70%); }
+.forma::after { background: radial-gradient(280px circle at var(--gx, 50%) var(--gy, 50%), rgba(227, 193, 121, .2), transparent 70%); }
+.ent:hover::after, .tile:hover::after, .forma:hover::after { opacity: 1; }
+.resultado { transition: box-shadow .5s; }
+.resultado.brilla { box-shadow: 0 0 0 1px rgba(227,193,121,.5), 0 20px 60px -20px rgba(227,193,121,.45); }
+@media (max-width: 680px) {
+  .linea .relleno { left: 22px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; transform-origin: top; transform: scaleY(var(--lp, 1)); background: linear-gradient(180deg, #9b7cc8, #6e2a87); }
+  .mapa-vivo { bottom: 100px; }
+}
+@media (max-width: 520px) { .mini-in .caps, .mini-in .x { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+  .petalos { display: none; }
 }
 @media print {
   .hero-bg, .etapa, .linea .viaje, .aura { display: none; }
@@ -423,8 +485,11 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 </head>
 <body>
 
+<div class="progreso" aria-hidden="true"><i></i></div>
+<nav class="mini-cab" aria-label="Atajos de la propuesta"><div class="mini-in"><img src="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/assets/assets/images/logo.b2b224accf057b53f0c1a24cb41fb1ce.png" alt=""><span class="caps">Mi Ciclo, Mi Poder</span><span class="x">× Xnod</span><a href="#t-recupero">La cuenta del recupero ↓</a></div></nav>
 <header class="hero gutter">
   <div class="hero-bg" aria-hidden="true">
+    <canvas class="petalos"></canvas>
     <span class="blob a"></span><span class="blob b"></span><span class="blob c"></span>
     <svg class="luna" viewBox="0 0 640 640" fill="none">
       <path d="M430 70 C300 40 150 130 120 290 C90 450 210 590 380 600 C260 560 190 450 210 320 C230 190 320 100 430 70 Z" stroke="#9b7cc8" stroke-width="1.4"/>
@@ -471,11 +536,18 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
             <div class="fila"><span class="av">N</span><div class="globo">¿En qué etapa de tu vida estás hoy?</div></div>
             <div class="opciones"><span>Menstruación</span><span>Embarazo</span><span class="on">Perimenopausia</span><span>Menopausia</span></div>
           </div>
+          <div class="mapa-vivo" aria-hidden="true">
+            <h5>Tus ritmos</h5>
+            <p>Mes a mes, lo que se te repite. Sin cargar nada: lo cuenta NUMA.</p>
+            <span class="mes">octubre</span>
+            <div class="cal cal-vivo"></div>
+            <div class="ley"><span><i class="v"></i>Te vino</span><span><i class="r"></i>Registraste algo</span></div>
+          </div>
           <div class="componer" aria-hidden="true"><span class="in">Escribí tu respuesta…</span><span class="env">Enviar</span></div>
           <nav class="tabs" aria-hidden="true">
-            <span class="t"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Mapa</span>
+            <span class="t tab-mapa"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Mapa</span>
             <span class="t"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 13h4"/></svg>Agenda</span>
-            <span class="n"><b>N</b>Numa</span>
+            <span class="n tab-numa"><b>N</b>Numa</span>
             <span class="t"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 10v7M8.5 13.5h7M9 7V5h6v2"/></svg>Cuidados</span>
             <span class="t"><svg viewBox="0 0 24 24"><path d="M4 6c3-1.5 5.5-1.5 8 0v13c-2.5-1.5-5-1.5-8 0zM20 6c-3-1.5-5.5-1.5-8 0v13c2.5-1.5 5-1.5 8 0z"/></svg>Diario</span>
           </nav>
@@ -835,7 +907,18 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     [precio, ia, meses].forEach(pintar);
     if (margen <= 0) { sus.textContent = '—'; deja.textContent = 'nada: el costo supera al precio'; return; }
     var n = Math.ceil(40000 / margen / m / 10) * 10;
-    sus.textContent = fmt(n);
+    var desde = parseInt((sus.textContent || '').replace(/\D/g, ''), 10);
+    if (reducir || !desde || desde === n) { sus.textContent = fmt(n); }
+    else {
+      var tok = (sus._tok = (sus._tok || 0) + 1), t0 = null;
+      requestAnimationFrame(function paso(ts) {
+        if (sus._tok !== tok) return;
+        if (!t0) t0 = ts;
+        var k = Math.min(1, (ts - t0) / 420), e = 1 - Math.pow(1 - k, 3);
+        sus.textContent = fmt(Math.round((desde + (n - desde) * e) / 10) * 10);
+        if (k < 1) requestAnimationFrame(paso);
+      });
+    }
     deja.textContent = 'USD ' + fmt(margen, 2);
     if (!reducir) { sus.classList.add('pulso'); setTimeout(function () { sus.classList.remove('pulso'); }, 180); }
   }
@@ -875,7 +958,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     chat.innerHTML = '';
     var i = 0;
     (function siguiente() {
-      if (i >= guion.length) { setTimeout(correr, 5200); return; }
+      if (i >= guion.length) { setTimeout(function () { if (window.__mapaVivo) window.__mapaVivo(correr); else correr(); }, 2400); return; }
       var paso = guion[i++];
       if (paso.t === 'yo' || paso.t === 'op') { chat.appendChild(fila(paso)); setTimeout(siguiente, 1100); return; }
       var e = escribiendo(); chat.appendChild(e);
@@ -913,6 +996,141 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   }
 })();
 </script>
+
+<script>
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var fino = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  var raiz = document.documentElement;
+
+  // El título entra palabra por palabra, y después lo demás de la portada.
+  var h1 = document.querySelector('.hero h1'), n = 0;
+  function partir(nodo) {
+    Array.prototype.slice.call(nodo.childNodes).forEach(function (c) {
+      if (c.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(function (pedazo) {
+          if (!pedazo) return;
+          if (/^\s+$/.test(pedazo)) { frag.appendChild(document.createTextNode(pedazo)); return; }
+          var sp = document.createElement('span'); sp.className = 'palabra'; sp.style.setProperty('--i', n++); sp.textContent = pedazo; frag.appendChild(sp);
+        });
+        nodo.replaceChild(frag, c);
+      } else if (c.nodeType === 1) { partir(c); }
+    });
+  }
+  if (h1) partir(h1);
+  document.querySelectorAll('.hero .marca, .hero .sub, .hero .precio, .hero .meta, .hero .sello').forEach(function (el, i) {
+    el.classList.add('entra-h'); el.style.setProperty('--i', i);
+  });
+
+  // Pétalos del logo, flotando detrás de la portada.
+  var hero = document.querySelector('.hero'), cv = document.querySelector('.petalos');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), corriendo = false, visible = true;
+    var colores = ['#c9aceb', '#a7c8b3', '#e8d2a8', '#d9b8e6'];
+    function medir() { W = hero.clientWidth; H = hero.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    medir(); window.addEventListener('resize', medir, { passive: true });
+    var cant = W < 700 ? 9 : 16, ps = [];
+    for (var k = 0; k < cant; k++) ps.push({ x: Math.random() * W, y: Math.random() * H, s: 5 + Math.random() * 9, r: Math.random() * 6.3, vr: (Math.random() - .5) * .01, vx: -.12 - Math.random() * .22, vy: -.15 - Math.random() * .3, c: colores[k % colores.length], a: .25 + Math.random() * .3, f: Math.random() * 6.3 });
+    function cuadro() {
+      if (!visible || document.hidden) { corriendo = false; return; }
+      ctx.clearRect(0, 0, W, H);
+      ps.forEach(function (q) {
+        q.x += q.vx + Math.sin(q.f += .01) * .25; q.y += q.vy; q.r += q.vr;
+        if (q.y < -20) { q.y = H + 20; q.x = Math.random() * W; }
+        if (q.x < -20) q.x = W + 20;
+        ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r); ctx.globalAlpha = q.a; ctx.fillStyle = q.c;
+        ctx.beginPath(); ctx.ellipse(0, 0, q.s * .45, q.s, 0, 0, 6.283); ctx.fill(); ctx.restore();
+      });
+      requestAnimationFrame(cuadro);
+    }
+    function arrancar() { if (!corriendo && visible && !document.hidden) { corriendo = true; requestAnimationFrame(cuadro); } }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; arrancar(); }).observe(hero);
+    document.addEventListener('visibilitychange', arrancar);
+    arrancar();
+  }
+
+  // El teléfono y las etapas siguen al mouse, con profundidad.
+  var escena = document.querySelector('.escena');
+  if (escena && fino) {
+    hero.addEventListener('pointermove', function (ev) {
+      var r = escena.getBoundingClientRect();
+      escena.style.setProperty('--mx', Math.max(-1, Math.min(1, (ev.clientX - (r.left + r.width / 2)) / (r.width / 2))).toFixed(3));
+      escena.style.setProperty('--my', Math.max(-1, Math.min(1, (ev.clientY - (r.top + r.height / 2)) / (r.height / 2))).toFixed(3));
+    }, { passive: true });
+    hero.addEventListener('pointerleave', function () { escena.style.setProperty('--mx', 0); escena.style.setProperty('--my', 0); });
+  }
+
+  // La app cambia sola del chat al mapa de ritmos, y los días se pintan.
+  var pantalla = document.querySelector('.escena .screen'), calVivo = document.querySelector('.cal-vivo');
+  if (calVivo) {
+    var celdas = '<span class="x"></span><span class="x"></span><span class="x"></span>';
+    for (var d = 1; d <= 31; d++) celdas += '<span data-d="' + d + '">' + d + '</span>';
+    calVivo.innerHTML = celdas;
+  }
+  window.__mapaVivo = function (sigue) {
+    if (!pantalla || !calVivo) { sigue(); return; }
+    pantalla.classList.add('en-mapa');
+    var pinta = [[19, 'on-h'], [3, 'on-v'], [4, 'on-v'], [5, 'on-v'], [6, 'on-v'], [7, 'on-v'], [11, 'on-r'], [12, 'on-r'], [24, 'on-r']], i = 0;
+    setTimeout(function paso() {
+      if (i < pinta.length) { var c = calVivo.querySelector('[data-d="' + pinta[i][0] + '"]'); if (c) c.classList.add(pinta[i][1]); i++; setTimeout(paso, 170); return; }
+      setTimeout(function () {
+        pantalla.classList.remove('en-mapa');
+        setTimeout(function () { calVivo.querySelectorAll('span').forEach(function (s) { s.classList.remove('on-v', 'on-r', 'on-h'); }); sigue(); }, 750);
+      }, 3200);
+    }, 800);
+  };
+
+  // Al bajar: barra de progreso, encabezado fijo, el plan que se llena y la vitrina en capas.
+  var barra = document.querySelector('.progreso'), cab = document.querySelector('.mini-cab');
+  var linea = document.querySelector('.linea'), sems = linea ? linea.querySelectorAll('.sem') : [];
+  if (linea) { var rell = document.createElement('span'); rell.className = 'relleno'; rell.setAttribute('aria-hidden', 'true'); linea.insertBefore(rell, linea.firstChild); }
+  var minis = document.querySelectorAll('.mini .phone'), factores = [-.07, .05, -.04];
+  var pendiente = false;
+  function alBajar() {
+    pendiente = false;
+    var alto = window.innerHeight, total = raiz.scrollHeight - alto;
+    if (barra) barra.style.setProperty('--prog', total > 0 ? (window.scrollY / total).toFixed(4) : 0);
+    if (cab && hero) cab.classList.toggle('ver', window.scrollY > hero.offsetHeight * .75);
+    if (linea) {
+      var r = linea.getBoundingClientRect();
+      var lp = Math.max(0, Math.min(1, (alto * .8 - r.top) / (r.height + alto * .35)));
+      linea.style.setProperty('--lp', lp.toFixed(3));
+      sems.forEach(function (s, i) { s.classList.toggle('activa', lp >= (sems.length > 1 ? i / (sems.length - 1) : 0) * .92 + .02); });
+    }
+    if (window.innerWidth > 940) minis.forEach(function (ph, i) {
+      var r = ph.getBoundingClientRect(), centro = r.top + r.height / 2 - alto / 2;
+      ph.style.translate = '0 ' + (centro * factores[i % factores.length]).toFixed(1) + 'px';
+    });
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; requestAnimationFrame(alBajar); } }, { passive: true });
+  window.addEventListener('resize', alBajar, { passive: true });
+  alBajar();
+
+  // La barra de pagos crece por tramos cuando aparece.
+  var barraPagos = document.querySelector('.barra');
+  if (barraPagos && 'IntersectionObserver' in window) {
+    var ob = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { barraPagos.classList.add('crece'); ob.disconnect(); } }, { threshold: .5 });
+    ob.observe(barraPagos);
+  }
+
+  // Una luz que sigue al mouse sobre las tarjetas.
+  if (fino) document.addEventListener('pointermove', function (ev) {
+    var el = ev.target.closest && ev.target.closest('.ent, .tile, .forma');
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', (ev.clientX - r.left) + 'px');
+    el.style.setProperty('--gy', (ev.clientY - r.top) + 'px');
+  }, { passive: true });
+
+  // La calculadora brilla cuando cambia.
+  var res = document.querySelector('.resultado');
+  document.querySelectorAll('.calc input[type="range"]').forEach(function (inp) {
+    inp.addEventListener('input', function () { if (!res) return; res.classList.add('brilla'); clearTimeout(res._t); res._t = setTimeout(function () { res.classList.remove('brilla'); }, 700); });
+  });
+})();
+</script>
+
 
 </body>
 </html>
