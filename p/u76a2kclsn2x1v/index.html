@@ -283,6 +283,22 @@ a { color: var(--plum); }
 .forma .pie-f { color: var(--band-ink); font-size: 14.5px; border-top: 1px solid rgba(255,255,255,.14); padding-top: 10px; }
 .letra-f { position: absolute; right: 18px; top: 6px; font-family: var(--font-display); font-size: 64px; line-height: 1; color: #e3c179; opacity: .3; }
 .tabla td.cuando { white-space: nowrap; color: var(--band-muted); }
+.precio .anual { font-size: 14.5px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 10px; }
+.precio .anual b { color: var(--plum); }
+.anual-card { display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 14px 28px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 26px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.anual-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: linear-gradient(180deg, var(--lav), var(--plum)); }
+.anual-izq { display: grid; gap: 6px; }
+.anual-izq h3 { font-size: 24px; }
+.anual-izq p { color: var(--muted); }
+.anual-precio { display: grid; justify-items: end; gap: 2px; text-align: right; }
+.anual-precio .num { font-family: var(--font-display); font-size: clamp(34px, 4.4vw, 46px); line-height: 1; color: var(--plum); white-space: nowrap; }
+.anual-precio small { color: var(--muted); font-size: 13.5px; }
+.anual-lista { grid-column: 1 / -1; margin: 0; padding: 14px 0 0; list-style: none; display: grid; gap: 8px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+.anual-lista b { color: var(--ink); }
+@media (max-width: 680px) {
+  .anual-card { grid-template-columns: minmax(0, 1fr); padding: 22px 20px; }
+  .anual-precio { justify-items: start; text-align: left; }
+}
 .calc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 22px; margin-top: 18px; align-items: stretch; }
 .ctrl { display: grid; gap: 22px; }
 .ctrl label { display: grid; gap: 8px; font-size: 15px; }
@@ -508,13 +524,8 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <div class="precio">
         <span class="big num"><small>USD</small>5.000</span>
         <p>Los podés poner vos o tu inversor, y se descuentan del desarrollo completo. Si el capital no llega, te quedás con todo y no nos debés nada.</p>
+        <p class="anual"><b>Aparte, USD 250 por año</b> para que la landing y el prototipo sigan en línea: lo gestionamos nosotros, con el dominio, el hosting y el soporte.</p>
       </div>
-      <div class="meta">
-        <span>Para <b>Evelyn Cerra</b></span>
-        <span>Fecha <b>21/10/2026</b></span>
-        <span>Válida hasta <b>20/11/2026</b></span>
-      </div>
-      <span class="sello">Confidencial · Para Evelyn y su inversor</span>
     </div>
 
     <div class="escena" aria-label="La app Mi Ciclo, Mi Poder: NUMA conversando">
@@ -807,6 +818,18 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <span class="caps">Las condiciones</span>
         <h2 id="t-incluye">Qué incluye y qué no</h2>
       </div>
+      <div class="anual-card" data-r>
+        <div class="anual-izq">
+          <span class="caps">Aparte · software y hardware</span>
+          <h3>Que todo siga en línea</h3>
+          <p>Lo gestionamos nosotros, así no tenés que ocuparte de nada técnico.</p>
+        </div>
+        <div class="anual-precio"><span class="num">USD 250</span><small>por año, desde el arranque</small></div>
+        <ul class="anual-lista">
+          <li><b>Incluye:</b> el dominio, el hosting de la landing y del prototipo, los certificados de seguridad, las renovaciones, y arreglar cualquier cosa que se caiga o deje de andar.</li>
+          <li><b>No incluye:</b> funciones nuevas ni cambios de contenido, que se cotizan aparte. Tampoco el mantenimiento de la app completa, que es un abono propio cuando la app esté publicada.</li>
+        </ul>
+      </div>
       <div class="incl">
         <div class="si" data-r>
           <h3>Incluye</h3>
@@ -824,7 +847,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
           <ul>
             <li>El desarrollo completo de la app, que es la etapa siguiente</li>
             <li>Publicar la app en las tiendas y sus cuentas</li>
-            <li>El dominio y el hosting de la landing después del primer año</li>
+            <li>El dominio, el hosting y el soporte: van aparte, USD 250 por año</li>
             <li>Pauta publicitaria</li>
             <li>Registro de marca, armado de la sociedad y honorarios legales o contables</li>
             <li>Impuestos</li>
@@ -864,14 +887,14 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       </div>
       <ol class="pasos">
         <li data-r><div><b>Lo revisamos juntos el viernes 23/10</b><span>Por videollamada, o en persona si tu escala en Córdoba coincide.</span></div></li>
-        <li data-r><div><b>Nos confirmás quién pone los 5.000</b><span>Vos o tu inversor. Le mandamos la factura de XNOD LLC a quien pague, con los datos de la transferencia.</span></div></li>
+        <li data-r><div><b>Nos confirmás quién pone los 5.000</b><span>Vos o tu inversor. Le mandamos la factura de XNOD LLC a quien pague, con los 5.000 y los 250 del primer año, y los datos de la transferencia.</span></div></li>
         <li data-r><div><b>Arrancamos la semana siguiente</b><span>Primera reunión de producto y armado de los dos grupos.</span></div></li>
         <li data-r><div><b>Entrega a las cuatro semanas</b><span>Y ensayamos la presentación antes de que te sientes con el inversor.</span></div></li>
       </ol>
     </div>
     <div class="wrap cierre">
       <div class="marca"><img src="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/assets/assets/images/logo.b2b224accf057b53f0c1a24cb41fb1ce.png" alt=""><span class="caps">Mi Ciclo, Mi Poder</span><span class="x">× Xnod</span></div>
-      <p>Alan Tapia y Juan Pablo Zaninetti · Válida hasta el 20/11/2026</p>
+      <p>Alan Tapia y Juan Pablo Zaninetti</p>
     </div>
   </section>
 
