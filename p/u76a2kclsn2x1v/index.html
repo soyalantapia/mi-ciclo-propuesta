@@ -276,6 +276,13 @@ a { color: var(--plum); }
 .fuente .ic { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.1); display: grid; place-items: center; }
 .fuente .ic svg { width: 21px; height: 21px; stroke: #e3c179; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .fuente p { color: var(--band-muted); font-size: 15px; }
+.formas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.forma { position: relative; display: grid; gap: 10px; align-content: start; overflow: hidden; }
+.forma h3 { font-size: 22px; }
+.forma p { color: var(--band-muted); font-size: 15.5px; }
+.forma .pie-f { color: var(--band-ink); font-size: 14.5px; border-top: 1px solid rgba(255,255,255,.14); padding-top: 10px; }
+.letra-f { position: absolute; right: 18px; top: 6px; font-family: var(--font-display); font-size: 64px; line-height: 1; color: #e3c179; opacity: .3; }
+.tabla td.cuando { white-space: nowrap; color: var(--band-muted); }
 .calc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 22px; margin-top: 18px; align-items: stretch; }
 .ctrl { display: grid; gap: 22px; }
 .ctrl label { display: grid; gap: 8px; font-size: 15px; }
@@ -380,7 +387,9 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   .tabla.apilada tbody td { padding: 0; border: 0; }
   .tabla.apilada tbody td:nth-child(1) { font-weight: 600; }
   .tabla.apilada tbody td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--band-muted); font-size: 14px; }
-  .tabla.apilada tbody td:nth-child(3) { grid-column: 2; grid-row: 1; }
+  .tabla.apilada tbody td:nth-child(3) { grid-column: 1 / -1; grid-row: 3; font-size: 13px; }
+  .tabla.apilada tbody td:nth-child(4) { grid-column: 2; grid-row: 1; }
+  .formas { grid-template-columns: minmax(0, 1fr); }
   .tabla.apilada tfoot tr { display: flex; justify-content: space-between; gap: 12px; padding: 0; }
   .tabla.apilada tfoot td { border: 0; }
   .tabla.apilada tfoot tr:first-child { border-top: 1px solid rgba(255,255,255,.25); }
@@ -433,7 +442,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <p class="sub">Qué desbloquean los USD 5.000, cómo trabajamos estas cuatro semanas, y cómo se recupera la inversión del desarrollo completo.</p>
       <div class="precio">
         <span class="big num"><small>USD</small>5.000</span>
-        <p>Se descuentan del desarrollo completo cuando levantes el capital. Si no lo levantás, te quedás con todo y no nos debés nada.</p>
+        <p>Los podés poner vos o tu inversor, y se descuentan del desarrollo completo. Si el capital no llega, te quedás con todo y no nos debés nada.</p>
       </div>
       <div class="meta">
         <span>Para <b>Evelyn Cerra</b></span>
@@ -485,9 +494,9 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <h2 id="t-mirada">Lo que te proponemos</h2>
       </div>
       <div class="tiles">
-        <div class="tile" data-r><span class="v num" data-cuenta="5000" data-pre="USD"><small>USD</small>5.000</span><span class="k">Inversión ahora</span><p>En un solo pago, al arrancar.</p></div>
+        <div class="tile" data-r><span class="v num" data-cuenta="5000" data-pre="USD"><small>USD</small>5.000</span><span class="k">Inversión ahora</span><p>En un solo pago, al arrancar. Los ponés vos o tu inversor.</p></div>
         <div class="tile" data-r><span class="v num" data-cuenta="4">4</span><span class="k">Semanas de trabajo</span><p>Con una reunión de producto por semana.</p></div>
-        <div class="tile" data-r><span class="v num" data-cuenta="40000" data-pre="USD"><small>USD</small>40.000</span><span class="k">El desarrollo completo</span><p>Estimado, con los 5.000 adentro. Al levantar el capital quedan 35.000.</p></div>
+        <div class="tile" data-r><span class="v num" data-cuenta="40000" data-pre="USD"><small>USD</small>40.000</span><span class="k">El desarrollo completo</span><p>Con los 5.000 adentro: quedan 35.000. Unas 14 semanas hasta la app en las tiendas.</p></div>
         <div class="tile verde" data-r><span class="v num"><small>USD</small>0</span><span class="k">De deuda si no levantás</span><p>Te quedás con el prototipo, la landing, el video y los números.</p></div>
       </div>
     </div>
@@ -636,9 +645,29 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <p class="lead">Esta parte es para usarla en la conversación con tu inversor. Los números finos salen del plan de negocio, en la semana 3. Lo de acá es la lógica, con las cuentas a la vista.</p>
       </div>
 
-      <div class="vidrio" data-r>
+      <div class="sub-h" data-r style="margin-top:0">
+        <span class="caps">Los USD 5.000</span>
+        <h3 style="font-size:28px">Dos formas de ponerlos</h3>
+        <p class="lead" style="font-size:16px">Elegís la que te quede más cómoda. En las dos, los 5.000 se descuentan del desarrollo completo y todo lo entregado queda tuyo.</p>
+      </div>
+      <div class="formas">
+        <div class="vidrio forma" data-r>
+          <span class="letra-f">A</span>
+          <h3>Los ponés vos</h3>
+          <p>Pagás los 5.000 al arrancar. Cuando tu inversor pone el capital del desarrollo, recuperás tus 5.000 y quedan 35.000 para construir la app.</p>
+          <p class="pie-f">Te conviene si querés llegar a la reunión con el inversor con todo ya armado.</p>
+        </div>
+        <div class="vidrio forma" data-r>
+          <span class="letra-f">B</span>
+          <h3>Los pone tu inversor, como primer paso</h3>
+          <p>Tu inversor pone los 5.000 ahora y con eso ve el producto andando, el plan y los números antes de decidir el resto. Si sigue, pone 35.000 más: en total, los mismos 40.000.</p>
+          <p class="pie-f">Para él es un primer paso chico y con algo concreto en la mano. Para vos, no sale nada de tu bolsillo.</p>
+        </div>
+      </div>
+
+      <div class="vidrio" data-r style="margin-top:22px">
         <h3>Qué pide el desarrollo completo: USD 40.000</h3>
-        <p class="lead" style="font-size:16px;margin-top:8px">Se paga en tres partes, cada una contra una entrega que se puede ver. Los 5.000 del prototipo ya están adentro de la primera.</p>
+        <p class="lead" style="font-size:16px;margin-top:8px">Desde que entra el capital, son <b style="color:#fff">unas 14 semanas</b> hasta la app publicada en las tiendas. Se paga en tres partes, cada una contra una entrega que se puede ver. Los 5.000 del prototipo ya están adentro de la primera.</p>
         <div class="barra" role="img" aria-label="40 por ciento al arranque, 30 a la versión de prueba y 30 al lanzamiento; los primeros 5.000 ya pagados con el prototipo">
           <div class="b1"><span class="credito"></span><b>16.000</b><span class="lbl">Arranque · 40 %</span></div>
           <div class="b2"><b>12.000</b><span class="lbl">Prueba · 30 %</span></div>
@@ -647,16 +676,16 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <div class="leyenda"><span class="et e-1">Arranque · 40 %</span><span class="et e-2">Prueba · 30 %</span><span class="et e-3">Lanzamiento · 30 %</span><span><i></i>Los 5.000 del prototipo, ya pagados</span></div>
         <div class="tabla apilada">
           <table>
-            <thead><tr><th>Etapa</th><th>Qué recibe</th><th class="r">USD</th></tr></thead>
+            <thead><tr><th>Etapa</th><th>Qué recibe</th><th>Cuándo</th><th class="r">USD</th></tr></thead>
             <tbody>
-              <tr><td>Arranque</td><td>El diseño final de todas las pantallas y la arquitectura, aprobados por vos</td><td class="r">16.000</td></tr>
-              <tr><td>Versión de prueba</td><td>La app funcionando con un grupo cerrado de usuarias reales</td><td class="r">12.000</td></tr>
-              <tr><td>Lanzamiento</td><td>La app publicada en las tiendas, con 30 días de soporte</td><td class="r">12.000</td></tr>
+              <tr><td>Arranque</td><td>El diseño final de todas las pantallas y la arquitectura, aprobados por vos</td><td class="cuando">Al arrancar</td><td class="r">16.000</td></tr>
+              <tr><td>Versión de prueba</td><td>La app funcionando con un grupo cerrado de usuarias reales</td><td class="cuando">Semana 8</td><td class="r">12.000</td></tr>
+              <tr><td>Lanzamiento</td><td>La app publicada en las tiendas, con 30 días de soporte</td><td class="cuando">Semana 14</td><td class="r">12.000</td></tr>
             </tbody>
             <tfoot>
-              <tr><td colspan="2">Total del desarrollo</td><td class="r">40.000</td></tr>
-              <tr class="suave"><td colspan="2">Menos el prototipo, ya pagado</td><td class="r">−5.000</td></tr>
-              <tr><td colspan="2">Lo que se paga al levantar el capital</td><td class="r">35.000</td></tr>
+              <tr><td colspan="3">Total del desarrollo</td><td class="r">40.000</td></tr>
+              <tr class="suave"><td colspan="3">Menos el prototipo, ya pagado</td><td class="r">−5.000</td></tr>
+              <tr><td colspan="3">Lo que se paga al levantar el capital</td><td class="r">35.000</td></tr>
             </tfoot>
           </table>
         </div>
@@ -735,7 +764,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <p><b>Un error se corrige sin cargo; un cambio se cotiza.</b> Un error es algo que no hace lo que dice este documento. Un cambio es algo nuevo que no estaba en el alcance.</p>
         <p><b>Lo que ponés vos:</b> tus documentos (el libro fundador y el MVP v1.0), tu logo y tus colores, y tu devolución de cada entrega dentro de los cinco días hábiles. Si algo se demora, la entrega se corre lo mismo.</p>
         <p><b>Aceptación:</b> tenés diez días hábiles para revisar cada entrega y decirnos qué no está bien. Si en ese plazo no hay observaciones, la entrega queda aceptada.</p>
-        <p><b>El pago:</b> en dólares, por transferencia a <b>XNOD LLC</b>, que te emite la factura. El trabajo arranca cuando se acredita. Los montos no incluyen impuestos.</p>
+        <p><b>El pago:</b> en dólares, por transferencia a <b>XNOD LLC</b>, que emite la factura a nombre de quien paga: vos o tu inversor. El trabajo arranca cuando se acredita. Los montos no incluyen impuestos.</p>
         <p>Es una <b>obligación de medios</b>: Xnod entrega lo descrito acá, pero no garantiza que el inversor decida invertir.</p>
       </div>
     </div>
@@ -763,7 +792,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       </div>
       <ol class="pasos">
         <li data-r><div><b>Lo revisamos juntos el viernes 23/10</b><span>Por videollamada, o en persona si tu escala en Córdoba coincide.</span></div></li>
-        <li data-r><div><b>Nos confirmás y hacés el pago</b><span>Te mandamos la factura de XNOD LLC con los datos de la transferencia.</span></div></li>
+        <li data-r><div><b>Nos confirmás quién pone los 5.000</b><span>Vos o tu inversor. Le mandamos la factura de XNOD LLC a quien pague, con los datos de la transferencia.</span></div></li>
         <li data-r><div><b>Arrancamos la semana siguiente</b><span>Primera reunión de producto y armado de los dos grupos.</span></div></li>
         <li data-r><div><b>Entrega a las cuatro semanas</b><span>Y ensayamos la presentación antes de que te sientes con el inversor.</span></div></li>
       </ol>
