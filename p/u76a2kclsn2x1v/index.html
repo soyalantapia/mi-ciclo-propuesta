@@ -600,6 +600,15 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .nota-ic { color: var(--plum); flex: none; }
 .pie-acc { max-width: 380px; }
 .pie-nota { flex-basis: 100%; color: #d3c0de; font-size: 13px; line-height: 1.45; }
+.meses-sel { display: grid; gap: 8px; font-size: 15px; }
+.meses-sel small { color: var(--band-muted); font-size: 13px; }
+.chips-m { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.chips-m button { font: inherit; font-size: 15px; font-weight: 600; padding: 9px 0; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .05); color: var(--band-ink); cursor: pointer; transition: background .2s, border-color .2s, color .2s, transform .2s; }
+.chips-m button:hover { border-color: rgba(227, 193, 121, .6); }
+.chips-m button:active { transform: scale(.96); }
+.chips-m button[aria-pressed="true"] { background: #e3c179; border-color: #e3c179; color: #2a1636; }
+.chips-m button:focus-visible { outline: 2px solid #e3c179; outline-offset: 2px; }
+.fijo-t { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--band-muted); font-weight: 600; }
 .fijo { display: grid; gap: 8px; font-size: 15px; padding: 14px 16px; border-radius: 14px; border: 1px dashed rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .04); }
 .fijo b { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: #fff; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .fijo small { color: var(--band-muted); font-size: 13px; }
@@ -918,21 +927,20 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       </div>
       <div class="calc" data-r>
         <div class="vidrio ctrl">
-          <label for="c-precio"><span class="fila-l"><span>Precio promedio por mes</span><output id="o-precio" for="c-precio">USD 4,00</output></span><input id="c-precio" type="range" min="2" max="8" step="0.5" value="4"><small>Entre los niveles pagos. Vos pensaste alrededor de 3 y 5.</small></label>
-          <div class="fijo"><span class="fila-l"><span>Tecnología por suscriptora, por mes</span><b>USD 1</b></span><span class="fila-l"><span>Servidores y lo básico, por mes</span><b>USD 100</b></span><small>Costos de ejemplo, armados por nosotros. El real se mide con la aplicación en el entregable 4.</small></div>
-          <label for="c-total"><span class="fila-l"><span>Costo del desarrollo completo</span><output id="o-total" for="c-total">USD 40.000</output></span><input id="c-total" type="range" min="40000" max="50000" step="5000" value="40000"><small>Entre 40.000 y 50.000, según el plan del desarrollo completo.</small></label>
-          <label for="c-meses"><span class="fila-l"><span>Recuperarlo en</span><output id="o-meses" for="c-meses">12 meses</output></span><input id="c-meses" type="range" min="6" max="36" step="6" value="12"><small>Las tiendas de aplicaciones se quedan con el 15 % del precio.</small></label>
+          <label for="c-precio"><span class="fila-l"><span>Precio promedio por mes</span><output id="o-precio" for="c-precio">USD 4,00</output></span><input id="c-precio" type="range" min="2" max="20" step="0.5" value="4"><small>Entre los niveles pagos. Vos pensaste alrededor de 3 y 5; se cobra por Mercado Pago.</small></label>
+          <div class="meses-sel"><span class="fila-l"><span id="t-meses">Recuperar la inversión en</span><output id="o-meses">12 meses</output></span><div class="chips-m" role="group" aria-labelledby="t-meses"><button type="button" data-m="6" aria-pressed="false">6</button><button type="button" data-m="12" aria-pressed="true">12</button><button type="button" data-m="18" aria-pressed="false">18</button><button type="button" data-m="24" aria-pressed="false">24</button><button type="button" data-m="36" aria-pressed="false">36</button></div><small>Meses. Tocá uno y mirá cómo cambia.</small></div>
+          <div class="fijo"><span class="fijo-t">Lo que dejamos fijo</span><span class="fila-l"><span>Desarrollo completo, promedio</span><b>USD 45.000</b></span><span class="fila-l"><span>Tecnología por suscriptora, por mes</span><b>USD 1</b></span><span class="fila-l"><span>Servidores y lo básico, por mes</span><b>USD 100</b></span><small>El desarrollo va de 40.000 a 50.000: tomamos el promedio. Los costos de tecnología son un ejemplo armado por nosotros; el real se mide con la aplicación en el entregable 4.</small></div>
         </div>
         <div class="vidrio resultado" aria-live="polite">
           <p>Suscriptoras pagas promedio</p>
-          <span class="grande num" id="r-sus">1.440</span>
-          <p class="deja">Cada una deja <b id="r-deja">USD 2,40</b> por mes</p>
+          <span class="grande num" id="r-sus">1.290</span>
+          <p class="deja">Cada una deja <b id="r-deja">USD 3,00</b> por mes</p>
         </div>
       </div>
       <div class="tabla" data-r style="margin-top:22px">
         <table>
-          <thead><tr><th>Con los valores de base (USD 4 de precio, USD 1 de tecnología por suscriptora y USD 100 por mes de servidores), para recuperar el desarrollo en…</th><th class="r">Si cuesta USD 40.000</th><th class="r">Si cuesta USD 50.000</th></tr></thead>
-          <tbody><tr><td>12 meses</td><td class="r">1.440</td><td class="r">1.780</td></tr><tr><td>18 meses</td><td class="r">970</td><td class="r">1.200</td></tr><tr><td>24 meses</td><td class="r">740</td><td class="r">910</td></tr></tbody>
+          <thead><tr><th>Con los valores de base (USD 4 de precio, USD 1 de tecnología por suscriptora y USD 100 por mes de servidores), para recuperar los USD 45.000 en…</th><th class="r">Suscriptoras pagas promedio</th></tr></thead>
+          <tbody><tr><td>12 meses</td><td class="r">1.290</td></tr><tr><td>18 meses</td><td class="r">870</td></tr><tr><td>24 meses</td><td class="r">660</td></tr></tbody>
         </table>
       </div>
       <p class="nota" data-r><b>Qué es supuesto y cómo se valida.</b> El precio es el que pensaste vos. Los costos de tecnología son un ejemplo armado por nosotros: USD 1 por suscriptora y USD 100 por mes de servidores y lo básico. El costo real se mide con la aplicación en el entregable 4, y si sale distinto, la cuenta se actualiza ahí. Esta cuenta no incluye el marketing ni el mantenimiento, que suma el plan de negocio. Cómo recupera su plata el inversor (participación en la empresa, préstamo convertible o parte de los ingresos) lo definen vos y él; estos números te dan con qué negociarlo.</p>
@@ -1091,19 +1099,18 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   }
 
   // La calculadora del recupero.
-  var precio = document.getElementById('c-precio'), meses = document.getElementById('c-meses'), desarrollo = document.getElementById('c-total');
-  var costoSus = 1, fijoMes = 100; // costos de tecnología de ejemplo: por suscriptora y fijos por mes
+  var precio = document.getElementById('c-precio'), botonesMes = document.querySelectorAll('.chips-m button');
+  var desarrollo = 45000, costoSus = 1, fijoMes = 100, mesesSel = 12; // el promedio del desarrollo y los costos de tecnología de ejemplo
   var sus = document.getElementById('r-sus'), deja = document.getElementById('r-deja');
   function pintar(el) { var p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
   function calcular() {
-    var pr = +precio.value, m = +meses.value, tot = desarrollo ? +desarrollo.value : 40000;
-    var margen = pr * 0.85 - costoSus;
+    var pr = +precio.value, m = mesesSel;
+    var margen = pr - costoSus; // se cobra por Mercado Pago, sin la comisión de las tiendas
     document.getElementById('o-precio').textContent = 'USD ' + fmt(pr, 2);
     document.getElementById('o-meses').textContent = m + ' meses';
-    if (desarrollo) document.getElementById('o-total').textContent = 'USD ' + fmt(tot);
-    [precio, meses, desarrollo].forEach(function (el) { if (el) pintar(el); });
+    pintar(precio);
     if (margen <= 0) { sus.textContent = '—'; deja.textContent = 'nada: el costo supera al precio'; return; }
-    var n = Math.ceil((tot / m + fijoMes) / margen / 10) * 10;
+    var n = Math.ceil((desarrollo / m + fijoMes) / margen / 10) * 10;
     var desde = parseInt((sus.textContent || '').replace(/\D/g, ''), 10);
     if (reducir || !desde || desde === n) { sus.textContent = fmt(n); }
     else {
@@ -1119,7 +1126,17 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     deja.textContent = 'USD ' + fmt(margen, 2);
     if (!reducir) { sus.classList.add('pulso'); setTimeout(function () { sus.classList.remove('pulso'); }, 180); }
   }
-  if (precio && meses) { [precio, meses, desarrollo].forEach(function (el) { if (el) el.addEventListener('input', calcular); }); calcular(); }
+  if (precio) {
+    precio.addEventListener('input', calcular);
+    botonesMes.forEach(function (b) {
+      b.addEventListener('click', function () {
+        mesesSel = +b.getAttribute('data-m');
+        botonesMes.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        calcular();
+      });
+    });
+    calcular();
+  }
 
   if (reducir) return;
 
