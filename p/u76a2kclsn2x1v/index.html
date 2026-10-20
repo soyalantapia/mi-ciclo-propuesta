@@ -104,7 +104,8 @@ a { color: var(--plum); }
 @keyframes trazo { from { stroke-dashoffset: 1400; } }
 .hero-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 48px; align-items: center; }
 .hero-copy { display: grid; gap: 24px; min-width: 0; }
-.marca { display: flex; align-items: center; gap: 12px; }
+.marca { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; row-gap: 4px; }
+.marca .caps, .marca .x { white-space: nowrap; }
 .marca img { width: 64px; height: auto; }
 .marca .x { color: var(--muted); font-size: 14px; }
 .hero h1 { font-size: clamp(42px, 6.6vw, 76px); font-weight: 400; }
@@ -146,7 +147,7 @@ a { color: var(--plum); }
 .entra { animation: entra .45s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes entra { from { opacity: 0; transform: translateY(10px) scale(.98); } }
 .componer { display: flex; gap: 8px; padding: 8px 12px 10px; }
-.componer .in { flex: 1; border: 1.5px solid #d9b46a; border-radius: 20px; padding: 7px 12px; font-size: 12px; color: #a08aa9; background: #fff; }
+.componer .in { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 1.5px solid #d9b46a; border-radius: 20px; padding: 7px 12px; font-size: 12px; color: #a08aa9; background: #fff; }
 .componer .env { border: 1.5px solid #6e2a87; border-radius: 20px; padding: 7px 12px; font-size: 12px; color: #6e2a87; font-weight: 600; }
 .tabs { display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; padding: 8px 6px 14px; border-top: 1px solid #f0e0ea; background: #fff; font-size: 9.5px; color: #d5bfcd; text-align: center; }
 .tabs .t { display: grid; gap: 3px; justify-items: center; }
@@ -159,6 +160,7 @@ a { color: var(--plum); }
 .etapa.e2 { top: 210px; right: -18px; animation-delay: -2.5s; } .etapa.e2 i { background: #d4a35c; }
 .etapa.e3 { bottom: 170px; left: -34px; animation-delay: -4s; } .etapa.e3 i { background: #9b7cc8; }
 .etapa.e4 { bottom: 56px; right: 0; animation-delay: -3s; } .etapa.e4 i { background: #557763; }
+.etapas-movil { display: contents; }
 .aura { position: absolute; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(155, 124, 200, .35), transparent 65%); z-index: 1; }
 
 /* ── En una mirada ───────────────────────────────────── */
@@ -212,6 +214,7 @@ a { color: var(--plum); }
 .cal span.r { background: #6f8f7a; border-color: #6f8f7a; color: #fff; }
 .cal span.h { border: 1.5px solid #6e2a87; color: #6e2a87; font-weight: 700; }
 .cal span.x { visibility: hidden; }
+.desliza { display: none; text-align: center; font-size: 13px; color: var(--muted); margin-top: 6px; }
 .demo-link { margin-top: 30px; text-align: center; color: var(--muted); font-size: 15px; }
 
 /* ── Entregables ─────────────────────────────────────── */
@@ -254,6 +257,9 @@ a { color: var(--plum); }
 .barra .b3 { width: 30%; background: linear-gradient(135deg, #7da38b, #557763); }
 .barra .credito { position: absolute; left: 0; top: 0; bottom: 0; width: 31.25%; background: repeating-linear-gradient(-45deg, rgba(255,255,255,.28) 0 6px, rgba(255,255,255,.08) 6px 12px); border-right: 2px dashed rgba(255,255,255,.7); }
 .leyenda { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13.5px; color: var(--band-muted); }
+.leyenda .et { display: none; }
+.leyenda .et::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.leyenda .e-1::before { background: #7e3a9c; } .leyenda .e-2::before { background: #9677c7; } .leyenda .e-3::before { background: #6a8f78; }
 .leyenda i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; background: repeating-linear-gradient(-45deg, rgba(255,255,255,.7) 0 3px, rgba(255,255,255,.2) 3px 6px); }
 .tabla { overflow-x: auto; margin-top: 18px; border-radius: 16px; border: 1px solid rgba(255,255,255,.12); }
 .tabla table { border-collapse: collapse; width: 100%; min-width: 540px; font: inherit; font-size: 15px; color: var(--band-ink); }
@@ -322,9 +328,13 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .js-anim [data-r] { transition: transform .9s cubic-bezier(.2,.8,.2,1), opacity .9s; }
 .js-anim [data-r].espera { transform: translateY(22px); opacity: .55; }
 
+@media (min-width: 941px) and (max-width: 1180px) {
+  .etapa.e2 { right: 0; }
+  .etapa.e3 { left: -12px; }
+}
 @media (max-width: 940px) {
   .hero-in { grid-template-columns: minmax(0, 1fr); }
-  .escena { min-height: 560px; }
+  .escena { min-height: 560px; width: 100%; max-width: 460px; margin-inline: auto; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vitrina { grid-template-columns: repeat(3, 220px); overflow-x: auto; padding: 30px 4px 10px; scroll-snap-type: x mandatory; }
   .vitrina .mini { scroll-snap-align: center; }
@@ -346,6 +356,49 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   .tile { padding: 18px 16px; }
   .barra div { padding: 0 8px; font-size: 11px; }
   .barra b { font-size: 16px; }
+}
+
+@media (max-width: 940px) {
+  .desliza { display: block; }
+  .vitrina { scroll-padding-inline: 16px; scrollbar-width: none; }
+  .vitrina::-webkit-scrollbar { display: none; }
+}
+@media (max-width: 680px) {
+  /* Las etapas pasan abajo del teléfono, en una grilla, para no tapar el chat. */
+  .escena { display: flex; flex-direction: column; align-items: center; gap: 18px; min-height: 0; }
+  .escena .phone { order: 1; }
+  .etapas-movil { order: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 340px; }
+  .etapa { position: static; justify-content: center; }
+  .aura { top: 40px; }
+  .barra { height: 52px; }
+  .barra .lbl { display: none; }
+  .barra b { font-size: 17px; }
+  .leyenda .et { display: inline-flex; align-items: center; }
+  .tabla.apilada table { min-width: 0; }
+  .tabla.apilada thead { display: none; }
+  .tabla.apilada tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .tabla.apilada tbody td { padding: 0; border: 0; }
+  .tabla.apilada tbody td:nth-child(1) { font-weight: 600; }
+  .tabla.apilada tbody td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--band-muted); font-size: 14px; }
+  .tabla.apilada tbody td:nth-child(3) { grid-column: 2; grid-row: 1; }
+  .tabla.apilada tfoot tr { display: flex; justify-content: space-between; gap: 12px; padding: 0; }
+  .tabla.apilada tfoot td { border: 0; }
+  .tabla.apilada tfoot tr:first-child { border-top: 1px solid rgba(255,255,255,.25); }
+  .tabla:not(.apilada) table { min-width: 0; }
+  .tabla th { letter-spacing: .06em; }
+  .tabla:not(.apilada) th.r { white-space: normal; text-align: right; }
+  .tabla:not(.apilada) th:first-child { width: 60%; }
+  .cierre { justify-content: flex-start; }
+}
+@media (max-width: 440px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .tile { padding: 18px 18px; }
+  .caps { letter-spacing: .16em; font-size: 11.5px; }
+  .marca img { width: 52px; }
+  .phone { width: 248px; height: 508px; }
+  .mini .phone { width: 200px; height: 400px; }
+  .vitrina { grid-template-columns: repeat(3, 200px); }
+  .ctrl .fila-l { flex-wrap: wrap; row-gap: 2px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -392,10 +445,12 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 
     <div class="escena" aria-label="La app Mi Ciclo, Mi Poder: NUMA conversando">
       <span class="aura" aria-hidden="true"></span>
-      <span class="etapa e1"><i></i>Menstruación</span>
-      <span class="etapa e2"><i></i>Embarazo</span>
-      <span class="etapa e3"><i></i>Perimenopausia</span>
-      <span class="etapa e4"><i></i>Menopausia</span>
+      <div class="etapas-movil">
+        <span class="etapa e1"><i></i>Menstruación</span>
+        <span class="etapa e2"><i></i>Embarazo</span>
+        <span class="etapa e3"><i></i>Perimenopausia</span>
+        <span class="etapa e4"><i></i>Menopausia</span>
+      </div>
       <div class="phone">
         <div class="screen">
           <span class="isla" aria-hidden="true"></span>
@@ -491,6 +546,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
           <figcaption><b>El mapa de ritmos</b><span>Lo que le pasa, mes a mes, sin cargar datos</span></figcaption>
         </figure>
       </div>
+      <p class="desliza" aria-hidden="true">Deslizá para ver las tres pantallas →</p>
       <p class="demo-link">Abrilo cuando quieras: <a href="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/" target="_blank" rel="noopener">xnod-proyectos.github.io/mi-ciclo-mi-poder</a></p>
     </div>
   </section>
@@ -584,12 +640,12 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <h3>Qué pide el desarrollo completo: USD 40.000</h3>
         <p class="lead" style="font-size:16px;margin-top:8px">Se paga en tres partes, cada una contra una entrega que se puede ver. Los 5.000 del prototipo ya están adentro de la primera.</p>
         <div class="barra" role="img" aria-label="40 por ciento al arranque, 30 a la versión de prueba y 30 al lanzamiento; los primeros 5.000 ya pagados con el prototipo">
-          <div class="b1"><span class="credito"></span><b>16.000</b>Arranque · 40 %</div>
-          <div class="b2"><b>12.000</b>Prueba · 30 %</div>
-          <div class="b3"><b>12.000</b>Lanzamiento · 30 %</div>
+          <div class="b1"><span class="credito"></span><b>16.000</b><span class="lbl">Arranque · 40 %</span></div>
+          <div class="b2"><b>12.000</b><span class="lbl">Prueba · 30 %</span></div>
+          <div class="b3"><b>12.000</b><span class="lbl">Lanzamiento · 30 %</span></div>
         </div>
-        <div class="leyenda"><span><i></i>Los 5.000 del prototipo, ya pagados</span></div>
-        <div class="tabla">
+        <div class="leyenda"><span class="et e-1">Arranque · 40 %</span><span class="et e-2">Prueba · 30 %</span><span class="et e-3">Lanzamiento · 30 %</span><span><i></i>Los 5.000 del prototipo, ya pagados</span></div>
+        <div class="tabla apilada">
           <table>
             <thead><tr><th>Etapa</th><th>Qué recibe</th><th class="r">USD</th></tr></thead>
             <tbody>
