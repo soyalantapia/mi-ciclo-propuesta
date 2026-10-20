@@ -596,6 +596,10 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .pie-firma { display: inline-flex; align-items: center; gap: 12px; }
 .pie-firma .lx { height: 32px; }
 .tile .v.rango { font-size: clamp(26px, 2.5vw, 33px); white-space: nowrap; }
+.nota-demo { display: inline-flex; align-items: flex-start; gap: 10px; max-width: 460px; margin-top: 4px; padding: 11px 16px; border-radius: 14px; background: var(--lav-wash); color: var(--ink); font-size: 14px; line-height: 1.45; text-align: left; }
+.nota-ic { color: var(--plum); flex: none; }
+.pie-acc { max-width: 380px; }
+.pie-nota { flex-basis: 100%; color: #d3c0de; font-size: 13px; line-height: 1.45; }
 .pie-xx { display: inline-flex; align-items: center; white-space: nowrap; }
 @media (max-width: 560px) { .marca .x .lx { height: 32px; } .pie-x .lx { height: 38px; } }
 @media (max-width: 380px) { .mini-in .x .lx { height: 26px; } .mini-in a { padding: 6px 10px; font-size: 13px; } }
@@ -758,7 +762,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         </figure>
       </div>
       <p class="desliza" aria-hidden="true">Deslizá para ver las tres pantallas →</p>
-      <p class="demo-cta"><a class="boton" href="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/" target="_blank" rel="noopener"><span>Probá la aplicación</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small>Se abre en el celular, sin instalar nada</small></p>
+      <p class="demo-cta"><a class="boton" href="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/" target="_blank" rel="noopener"><span>Probá la aplicación</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small>Se abre en el celular, sin instalar nada</small><span class="nota-demo"><span class="nota-ic" aria-hidden="true">✦</span>Es la versión de septiembre. En la primera etapa la conectamos con inteligencia artificial.</span></p>
     </div>
   </section>
 
@@ -1055,6 +1059,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     </div>
     <div class="pie-acc">
       <a class="boton boton-claro" href="https://xnod-proyectos.github.io/mi-ciclo-mi-poder/" target="_blank" rel="noopener"><span>Probá la aplicación</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <small class="pie-nota">Es la versión de septiembre. En la primera etapa la conectamos con inteligencia artificial.</small>
       <a class="pie-arriba" href="#">Volver arriba ↑</a>
     </div>
   </div>
