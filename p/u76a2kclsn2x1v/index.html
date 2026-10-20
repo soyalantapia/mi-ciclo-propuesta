@@ -600,6 +600,9 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .nota-ic { color: var(--plum); flex: none; }
 .pie-acc { max-width: 380px; }
 .pie-nota { flex-basis: 100%; color: #d3c0de; font-size: 13px; line-height: 1.45; }
+.fijo { display: grid; gap: 8px; font-size: 15px; padding: 14px 16px; border-radius: 14px; border: 1px dashed rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .04); }
+.fijo b { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: #fff; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.fijo small { color: var(--band-muted); font-size: 13px; }
 .pie-xx { display: inline-flex; align-items: center; white-space: nowrap; }
 @media (max-width: 560px) { .marca .x .lx { height: 32px; } .pie-x .lx { height: 38px; } }
 @media (max-width: 380px) { .mini-in .x .lx { height: 26px; } .mini-in a { padding: 6px 10px; font-size: 13px; } }
@@ -798,7 +801,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
           <span class="n" aria-hidden="true">4</span>
           <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 16l4-5 3 3 5-7"/><circle cx="18" cy="7" r="1.4"/></svg></span>
           <h3>El plan de negocio para el inversor</h3>
-          <p>Cómo entra la plata, cuánto cuesta cada usuaria y la proyección a 24 meses en tres escenarios. Con el costo real de la inteligencia artificial por usuaria, medido con la aplicación.</p>
+          <p>Cómo entra la plata, cuánto cuesta cada usuaria y la proyección a 24 meses en tres escenarios. Con el costo real de tecnología por usuaria, medido con la aplicación.</p>
           <p class="listo"><b>Está listo cuando</b> recibís la planilla editable y un resumen de dos páginas para el inversor.</p>
         </article>
         <article class="ent" data-r>
@@ -916,23 +919,23 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <div class="calc" data-r>
         <div class="vidrio ctrl">
           <label for="c-precio"><span class="fila-l"><span>Precio promedio por mes</span><output id="o-precio" for="c-precio">USD 4,00</output></span><input id="c-precio" type="range" min="2" max="8" step="0.5" value="4"><small>Entre los niveles pagos. Vos pensaste alrededor de 3 y 5.</small></label>
-          <label for="c-ia"><span class="fila-l"><span>Inteligencia artificial por suscriptora</span><output id="o-ia" for="c-ia">USD 1,00</output></span><input id="c-ia" type="range" min="0.25" max="3" step="0.25" value="1"><small>Estimado, con un techo de uso por nivel. Se mide en el entregable 4.</small></label>
+          <div class="fijo"><span class="fila-l"><span>Tecnología por suscriptora, por mes</span><b>USD 1</b></span><span class="fila-l"><span>Servidores y lo básico, por mes</span><b>USD 100</b></span><small>Costos de ejemplo, armados por nosotros. El real se mide con la aplicación en el entregable 4.</small></div>
           <label for="c-total"><span class="fila-l"><span>Costo del desarrollo completo</span><output id="o-total" for="c-total">USD 40.000</output></span><input id="c-total" type="range" min="40000" max="50000" step="5000" value="40000"><small>Entre 40.000 y 50.000, según el plan del desarrollo completo.</small></label>
           <label for="c-meses"><span class="fila-l"><span>Recuperarlo en</span><output id="o-meses" for="c-meses">12 meses</output></span><input id="c-meses" type="range" min="6" max="36" step="6" value="12"><small>Las tiendas de aplicaciones se quedan con el 15 % del precio.</small></label>
         </div>
         <div class="vidrio resultado" aria-live="polite">
           <p>Suscriptoras pagas promedio</p>
-          <span class="grande num" id="r-sus">1.390</span>
+          <span class="grande num" id="r-sus">1.440</span>
           <p class="deja">Cada una deja <b id="r-deja">USD 2,40</b> por mes</p>
         </div>
       </div>
       <div class="tabla" data-r style="margin-top:22px">
         <table>
-          <thead><tr><th>Con los valores de base (USD 4 de precio y USD 1 de IA), para recuperar el desarrollo en…</th><th class="r">Si cuesta USD 40.000</th><th class="r">Si cuesta USD 50.000</th></tr></thead>
-          <tbody><tr><td>12 meses</td><td class="r">1.390</td><td class="r">1.740</td></tr><tr><td>18 meses</td><td class="r">930</td><td class="r">1.160</td></tr><tr><td>24 meses</td><td class="r">700</td><td class="r">870</td></tr></tbody>
+          <thead><tr><th>Con los valores de base (USD 4 de precio, USD 1 de tecnología por suscriptora y USD 100 por mes de servidores), para recuperar el desarrollo en…</th><th class="r">Si cuesta USD 40.000</th><th class="r">Si cuesta USD 50.000</th></tr></thead>
+          <tbody><tr><td>12 meses</td><td class="r">1.440</td><td class="r">1.780</td></tr><tr><td>18 meses</td><td class="r">970</td><td class="r">1.200</td></tr><tr><td>24 meses</td><td class="r">740</td><td class="r">910</td></tr></tbody>
         </table>
       </div>
-      <p class="nota" data-r><b>Qué es supuesto y cómo se valida.</b> El precio es el que pensaste vos. El costo de la inteligencia artificial es una estimación nuestra, y medirlo con la aplicación es parte del entregable 4: si sale distinto, la cuenta se actualiza ahí. Esta cuenta no incluye el marketing ni el mantenimiento, que suma el plan de negocio. Cómo recupera su plata el inversor (participación en la empresa, préstamo convertible o parte de los ingresos) lo definen vos y él; estos números te dan con qué negociarlo.</p>
+      <p class="nota" data-r><b>Qué es supuesto y cómo se valida.</b> El precio es el que pensaste vos. Los costos de tecnología son un ejemplo armado por nosotros: USD 1 por suscriptora y USD 100 por mes de servidores y lo básico. El costo real se mide con la aplicación en el entregable 4, y si sale distinto, la cuenta se actualiza ahí. Esta cuenta no incluye el marketing ni el mantenimiento, que suma el plan de negocio. Cómo recupera su plata el inversor (participación en la empresa, préstamo convertible o parte de los ingresos) lo definen vos y él; estos números te dan con qué negociarlo.</p>
     </div>
   </section>
 
@@ -1088,19 +1091,19 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   }
 
   // La calculadora del recupero.
-  var precio = document.getElementById('c-precio'), ia = document.getElementById('c-ia'), meses = document.getElementById('c-meses'), desarrollo = document.getElementById('c-total');
+  var precio = document.getElementById('c-precio'), meses = document.getElementById('c-meses'), desarrollo = document.getElementById('c-total');
+  var costoSus = 1, fijoMes = 100; // costos de tecnología de ejemplo: por suscriptora y fijos por mes
   var sus = document.getElementById('r-sus'), deja = document.getElementById('r-deja');
   function pintar(el) { var p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
   function calcular() {
-    var pr = +precio.value, costo = +ia.value, m = +meses.value, tot = desarrollo ? +desarrollo.value : 40000;
-    var margen = pr * 0.85 - costo;
+    var pr = +precio.value, m = +meses.value, tot = desarrollo ? +desarrollo.value : 40000;
+    var margen = pr * 0.85 - costoSus;
     document.getElementById('o-precio').textContent = 'USD ' + fmt(pr, 2);
-    document.getElementById('o-ia').textContent = 'USD ' + fmt(costo, 2);
     document.getElementById('o-meses').textContent = m + ' meses';
     if (desarrollo) document.getElementById('o-total').textContent = 'USD ' + fmt(tot);
-    [precio, ia, meses, desarrollo].forEach(function (el) { if (el) pintar(el); });
+    [precio, meses, desarrollo].forEach(function (el) { if (el) pintar(el); });
     if (margen <= 0) { sus.textContent = '—'; deja.textContent = 'nada: el costo supera al precio'; return; }
-    var n = Math.ceil(tot / margen / m / 10) * 10;
+    var n = Math.ceil((tot / m + fijoMes) / margen / 10) * 10;
     var desde = parseInt((sus.textContent || '').replace(/\D/g, ''), 10);
     if (reducir || !desde || desde === n) { sus.textContent = fmt(n); }
     else {
@@ -1116,7 +1119,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     deja.textContent = 'USD ' + fmt(margen, 2);
     if (!reducir) { sus.classList.add('pulso'); setTimeout(function () { sus.classList.remove('pulso'); }, 180); }
   }
-  if (precio && ia && meses) { [precio, ia, meses, desarrollo].forEach(function (el) { if (el) el.addEventListener('input', calcular); }); calcular(); }
+  if (precio && meses) { [precio, meses, desarrollo].forEach(function (el) { if (el) el.addEventListener('input', calcular); }); calcular(); }
 
   if (reducir) return;
 
