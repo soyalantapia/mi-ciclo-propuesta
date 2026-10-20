@@ -595,6 +595,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .pie-x .lx { height: 42px; }
 .pie-firma { display: inline-flex; align-items: center; gap: 12px; }
 .pie-firma .lx { height: 32px; }
+.tile .v.rango { font-size: clamp(26px, 2.5vw, 33px); white-space: nowrap; }
 .pie-xx { display: inline-flex; align-items: center; white-space: nowrap; }
 @media (max-width: 560px) { .marca .x .lx { height: 32px; } .pie-x .lx { height: 38px; } }
 @media (max-width: 380px) { .mini-in .x .lx { height: 26px; } .mini-in a { padding: 6px 10px; font-size: 13px; } }
@@ -697,7 +698,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <div class="tiles">
         <div class="tile" data-r><span class="v num" data-cuenta="5000" data-pre="USD"><small>USD</small>5.000</span><span class="k">Primera etapa</span><p>La aplicación NUMA MVP, en un solo pago. Inversión propia o primer aporte de tu inversor.</p></div>
         <div class="tile" data-r><span class="v num" data-cuenta="4">4</span><span class="k">Semanas de trabajo</span><p>Con una reunión de producto por semana.</p></div>
-        <div class="tile" data-r><span class="v num" data-cuenta="40000" data-pre="USD"><small>USD</small>40.000</span><span class="k">El desarrollo completo</span><p>Con los 5.000 adentro: quedan 35.000 para terminar la plataforma, en unas 14 semanas.</p></div>
+        <div class="tile" data-r><span class="v num rango"><small>USD</small>40 a 50 mil</span><span class="k">El desarrollo completo</span><p>Con los 5.000 adentro: la segunda etapa, para terminar la plataforma, va de 35.000 a 45.000, en unas 14 semanas.</p></div>
         <div class="tile verde" data-r><span class="v num"><small>USD</small>0</span><span class="k">De deuda si el capital no llega</span><p>Te quedás con la aplicación, la landing, el video y los números.</p></div>
       </div>
     </div>
@@ -800,7 +801,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
           <span class="n" aria-hidden="true">5</span>
           <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v4h4M8.5 12h7M8.5 15.5h7"/></svg></span>
           <h3>El plan del desarrollo completo</h3>
-          <p>Los USD 40.000 abiertos fase por fase: qué se construye, en qué orden, en cuánto tiempo y con qué equipo. Es lo que el inversor va a querer ver antes de poner la plata.</p>
+          <p>El desarrollo completo abierto fase por fase: qué se construye, en qué orden, en cuánto tiempo, con qué equipo y el precio final de la segunda etapa. Es lo que el inversor va a querer ver antes de poner la plata.</p>
           <p class="listo"><b>Está listo cuando</b> recibís el documento con el alcance, las fases, los plazos y el precio de cada una.</p>
         </article>
         <article class="ent" data-r>
@@ -823,7 +824,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <div class="linea" data-r>
         <span class="viaje" aria-hidden="true"></span>
         <div class="sem"><span class="dot">1</span><div><h3>Tu devolución</h3><ul><li>Repasamos la app punto por punto</li><li>Colores y nombre de trabajo</li><li>Arranca la medición del costo por usuaria</li></ul></div></div>
-        <div class="sem"><span class="dot">2</span><div><h3>NUMA y la landing</h3><ul><li>NUMA ajustada</li><li>Landing publicada</li><li>Primer borrador de los números</li></ul></div></div>
+        <div class="sem"><span class="dot">2</span><div><h3>NUMA y la landing</h3><ul><li>NUMA ajustada: que no se repita ni se frene</li><li>Landing publicada</li><li>Primer borrador de los números</li></ul></div></div>
         <div class="sem"><span class="dot">3</span><div><h3>Video y plan</h3><ul><li>El video</li><li>El plan del desarrollo completo</li><li>La proyección en tres escenarios</li></ul></div></div>
         <div class="sem"><span class="dot">4</span><div><h3>Entrega y ensayo</h3><ul><li>Te entregamos todo</li><li>Ensayamos juntos la presentación al inversor</li></ul></div></div>
       </div>
@@ -855,34 +856,34 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <div class="vidrio forma" data-r>
           <span class="letra-f">A</span>
           <h3>Inversión propia</h3>
-          <p>Hacés el aporte inicial de 5.000. Cuando ingresa el capital del desarrollo, se te reintegra y quedan 35.000 para terminar la plataforma.</p>
+          <p>Hacés el aporte inicial de 5.000. Cuando ingresa el capital del inversor, esos 5.000 se te reintegran de ese capital, y el resto, entre 35.000 y 45.000, va a terminar la plataforma.</p>
           <p class="pie-f">Conviene si querés llegar a la reunión con el inversor con todo ya armado.</p>
         </div>
         <div class="vidrio forma" data-r>
           <span class="letra-f">B</span>
           <h3>Primer aporte del inversor</h3>
-          <p>Tu inversor aporta los 5.000 ahora y con eso ve la aplicación andando, el plan y los números antes de decidir el resto. Si sigue, aporta 35.000 más: en total, los mismos 40.000.</p>
+          <p>Tu inversor aporta los 5.000 ahora y con eso ve la aplicación andando, el plan y los números antes de decidir el resto. Si sigue, aporta el resto, entre 35.000 y 45.000: en total, lo mismo que en la opción A.</p>
           <p class="pie-f">Para él, un primer paso acotado y con algo concreto en la mano. Para el proyecto, arranca sin inversión propia.</p>
         </div>
       </div>
 
       <div class="vidrio" data-r style="margin-top:22px">
-        <h3>Qué pide el desarrollo completo: USD 40.000</h3>
-        <p class="lead" style="font-size:16px;margin-top:8px">Se arma en dos etapas. La primera es la base: entender el mercado y tener la aplicación NUMA MVP andando para conseguir clientas e inversión. La segunda es terminar de construir la plataforma y llevar NUMA a algo realmente superador, en <b style="color:#fff">unas 14 semanas</b> desde que ingresa el capital.</p>
-        <div class="barra barra-2" role="img" aria-label="Primera etapa, 5.000; plataforma completa, 35.000; en total 40.000">
+        <h3>Qué pide el desarrollo completo: USD 40.000 a 50.000</h3>
+        <p class="lead" style="font-size:16px;margin-top:8px">Se arma en dos etapas. La primera es la base: entender el mercado y tener la aplicación NUMA MVP andando para conseguir clientas e inversión. La segunda es terminar de construir la plataforma y llevar NUMA a algo realmente superador, en <b style="color:#fff">unas 14 semanas</b> desde que ingresa el capital. Esa segunda etapa la estimamos <b style="color:#fff">entre USD 35.000 y 45.000</b>: el número final lo cerramos con el plan del desarrollo completo, cuando la aplicación MVP ya esté construida y sepamos exactamente qué hace falta.</p>
+        <div class="barra barra-2" role="img" aria-label="Primera etapa, 5.000; plataforma completa, de 35.000 a 45.000; en total, de 40.000 a 50.000">
           <div class="b1"><b>5.000</b><span class="lbl">Primera etapa</span></div>
-          <div class="b2"><b>35.000</b><span class="lbl">Plataforma completa</span></div>
+          <div class="b2"><b>35.000 a 45.000</b><span class="lbl">Plataforma completa</span></div>
         </div>
-        <div class="leyenda"><span class="et e-1">Primera etapa · 5.000</span><span class="et e-2">Plataforma completa · 35.000</span></div>
+        <div class="leyenda"><span class="et e-1">Primera etapa · 5.000</span><span class="et e-2">Plataforma completa · 35.000 a 45.000</span></div>
         <div class="tabla apilada">
           <table>
             <thead><tr><th>Etapa</th><th>Qué es</th><th>Cuándo</th><th class="r">USD</th></tr></thead>
             <tbody>
               <tr><td>Primera etapa</td><td>Entender el mercado, validar con usuarias reales y tener la aplicación NUMA MVP andando, con la landing, el video y los dos planes</td><td class="cuando">Ahora, en 4 semanas</td><td class="r">5.000</td></tr>
-              <tr><td>Plataforma completa</td><td>Terminar de construir la plataforma: NUMA completa y superadora, con inteligencia artificial a escala y lista para crecer con miles de usuarias</td><td class="cuando">Al ingresar el capital, en unas 14 semanas</td><td class="r">35.000</td></tr>
+              <tr><td>Plataforma completa</td><td>Terminar de construir la plataforma: NUMA completa y superadora, con inteligencia artificial a escala y lista para crecer con miles de usuarias</td><td class="cuando">Al ingresar el capital, en unas 14 semanas</td><td class="r">35.000 a 45.000</td></tr>
             </tbody>
             <tfoot>
-              <tr><td colspan="3">Total del desarrollo</td><td class="r">40.000</td></tr>
+              <tr><td colspan="3">Total del desarrollo</td><td class="r">40.000 a 50.000</td></tr>
             </tfoot>
           </table>
         </div>
@@ -890,7 +891,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
           <span class="fe-ic" aria-hidden="true">✦</span>
           <p><b>Nuestro voto de fe.</b> Lo que construimos en la primera etapa vale bastante más que esos 5.000. La diferencia la ponemos nosotros, como un voto de fe en el proyecto, confiando en que el levantamiento de capital la va a compensar.</p>
         </div>
-        <p class="aparte"><b>Para tenerlo en cuenta:</b> además del desarrollo, el inversor tiene que contemplar el marketing del lanzamiento, el registro de la marca, armar la sociedad y, después de publicar, el mantenimiento de la app, que podemos cotizar aparte como un abono mensual.</p>
+        <p class="aparte"><b>Para tenerlo en cuenta:</b> además del desarrollo, el inversor tiene que contemplar el marketing del lanzamiento, el registro de la marca, armar la sociedad y, una vez publicada, el mantenimiento de la app: una tarifa plana por mes, que te pasamos con el plan, para que la app no quede desactualizada.</p>
       </div>
 
       <div class="sub-h" data-r>
@@ -912,7 +913,8 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <div class="vidrio ctrl">
           <label for="c-precio"><span class="fila-l"><span>Precio promedio por mes</span><output id="o-precio" for="c-precio">USD 4,00</output></span><input id="c-precio" type="range" min="2" max="8" step="0.5" value="4"><small>Entre los niveles pagos. Vos pensaste alrededor de 3 y 5.</small></label>
           <label for="c-ia"><span class="fila-l"><span>Inteligencia artificial por suscriptora</span><output id="o-ia" for="c-ia">USD 1,00</output></span><input id="c-ia" type="range" min="0.25" max="3" step="0.25" value="1"><small>Estimado, con un techo de uso por nivel. Se mide en el entregable 4.</small></label>
-          <label for="c-meses"><span class="fila-l"><span>Recuperar los USD 40.000 en</span><output id="o-meses" for="c-meses">12 meses</output></span><input id="c-meses" type="range" min="6" max="36" step="6" value="12"><small>Las tiendas de aplicaciones se quedan con el 15 % del precio.</small></label>
+          <label for="c-total"><span class="fila-l"><span>Costo del desarrollo completo</span><output id="o-total" for="c-total">USD 40.000</output></span><input id="c-total" type="range" min="40000" max="50000" step="5000" value="40000"><small>Entre 40.000 y 50.000, según el plan del desarrollo completo.</small></label>
+          <label for="c-meses"><span class="fila-l"><span>Recuperarlo en</span><output id="o-meses" for="c-meses">12 meses</output></span><input id="c-meses" type="range" min="6" max="36" step="6" value="12"><small>Las tiendas de aplicaciones se quedan con el 15 % del precio.</small></label>
         </div>
         <div class="vidrio resultado" aria-live="polite">
           <p>Suscriptoras pagas promedio</p>
@@ -922,8 +924,8 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       </div>
       <div class="tabla" data-r style="margin-top:22px">
         <table>
-          <thead><tr><th>Con los valores de base (USD 4 de precio y USD 1 de IA), para recuperar los USD 40.000 en…</th><th class="r">Suscriptoras pagas promedio</th></tr></thead>
-          <tbody><tr><td>12 meses</td><td class="r">1.390</td></tr><tr><td>18 meses</td><td class="r">930</td></tr><tr><td>24 meses</td><td class="r">700</td></tr></tbody>
+          <thead><tr><th>Con los valores de base (USD 4 de precio y USD 1 de IA), para recuperar el desarrollo en…</th><th class="r">Si cuesta USD 40.000</th><th class="r">Si cuesta USD 50.000</th></tr></thead>
+          <tbody><tr><td>12 meses</td><td class="r">1.390</td><td class="r">1.740</td></tr><tr><td>18 meses</td><td class="r">930</td><td class="r">1.160</td></tr><tr><td>24 meses</td><td class="r">700</td><td class="r">870</td></tr></tbody>
         </table>
       </div>
       <p class="nota" data-r><b>Qué es supuesto y cómo se valida.</b> El precio es el que pensaste vos. El costo de la inteligencia artificial es una estimación nuestra, y medirlo con la aplicación es parte del entregable 4: si sale distinto, la cuenta se actualiza ahí. Esta cuenta no incluye el marketing ni el mantenimiento, que suma el plan de negocio. Cómo recupera su plata el inversor (participación en la empresa, préstamo convertible o parte de los ingresos) lo definen vos y él; estos números te dan con qué negociarlo.</p>
@@ -940,7 +942,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
         <div class="anual-izq">
           <span class="caps">Aparte · software y hardware</span>
           <h3>Que todo siga en línea</h3>
-          <p>Lo gestionamos nosotros, así no tenés que ocuparte de nada técnico.</p>
+          <p>Lo gestionamos nosotros, así no tenés que ocuparte de nada técnico. No es el mantenimiento de la app: ese es una tarifa plana aparte, cuando esté publicada.</p>
         </div>
         <div class="anual-precio"><span class="num">USD 350</span><small>por año, desde el arranque</small></div>
         <ul class="anual-chips">
@@ -1035,7 +1037,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
       <ol class="pasos">
         <li data-r><div><b>Lo revisamos juntos el viernes 23/10</b><span>Por videollamada, o en persona si tu escala en Córdoba coincide.</span></div></li>
         <li data-r><div><b>Nos confirmás la forma de inversión</b><span>Propia o del inversor. Emitimos la factura a nombre de quien haga el aporte: los 5.000 de la primera etapa y los 350 del primer año.</span></div></li>
-        <li data-r><div><b>Arrancamos la semana siguiente</b><span>Primera reunión de producto y armado de los dos grupos.</span></div></li>
+        <li data-r><div><b>Arrancamos cuando entra el pago</b><span>Esa misma semana hacemos la primera reunión de producto y armamos los dos grupos.</span></div></li>
         <li data-r><div><b>Entrega a las cuatro semanas</b><span>Y ensayamos la presentación antes de que te sientes con el inversor.</span></div></li>
       </ol>
     </div>
@@ -1081,18 +1083,19 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
   }
 
   // La calculadora del recupero.
-  var precio = document.getElementById('c-precio'), ia = document.getElementById('c-ia'), meses = document.getElementById('c-meses');
+  var precio = document.getElementById('c-precio'), ia = document.getElementById('c-ia'), meses = document.getElementById('c-meses'), desarrollo = document.getElementById('c-total');
   var sus = document.getElementById('r-sus'), deja = document.getElementById('r-deja');
   function pintar(el) { var p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
   function calcular() {
-    var pr = +precio.value, costo = +ia.value, m = +meses.value;
+    var pr = +precio.value, costo = +ia.value, m = +meses.value, tot = desarrollo ? +desarrollo.value : 40000;
     var margen = pr * 0.85 - costo;
     document.getElementById('o-precio').textContent = 'USD ' + fmt(pr, 2);
     document.getElementById('o-ia').textContent = 'USD ' + fmt(costo, 2);
     document.getElementById('o-meses').textContent = m + ' meses';
-    [precio, ia, meses].forEach(pintar);
+    if (desarrollo) document.getElementById('o-total').textContent = 'USD ' + fmt(tot);
+    [precio, ia, meses, desarrollo].forEach(function (el) { if (el) pintar(el); });
     if (margen <= 0) { sus.textContent = '—'; deja.textContent = 'nada: el costo supera al precio'; return; }
-    var n = Math.ceil(40000 / margen / m / 10) * 10;
+    var n = Math.ceil(tot / margen / m / 10) * 10;
     var desde = parseInt((sus.textContent || '').replace(/\D/g, ''), 10);
     if (reducir || !desde || desde === n) { sus.textContent = fmt(n); }
     else {
@@ -1108,7 +1111,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
     deja.textContent = 'USD ' + fmt(margen, 2);
     if (!reducir) { sus.classList.add('pulso'); setTimeout(function () { sus.classList.remove('pulso'); }, 180); }
   }
-  if (precio && ia && meses) { [precio, ia, meses].forEach(function (el) { el.addEventListener('input', calcular); }); calcular(); }
+  if (precio && ia && meses) { [precio, ia, meses, desarrollo].forEach(function (el) { if (el) el.addEventListener('input', calcular); }); calcular(); }
 
   if (reducir) return;
 
